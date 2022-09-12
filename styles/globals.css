@@ -1,9 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+.layout-container :is(h1, h2, h3) {
+  font-family: "Anton", sans-serif;
+}
+
+body {
+  min-height: 100vh !important;
 }
 
 a {
@@ -13,6 +23,23 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.layout-container {
+  min-height: 100vh;
+}
+
+main {
+  flex-grow: 1;
+}
+
+footer {
+  background-image: radial-gradient(
+    circle farthest-corner at 92.3% 71.5%,
+    rgba(83, 138, 214, 1) 0%,
+    rgba(134, 231, 214, 1) 90%
+  );
+  padding: 4rem !important;
 }
 
 @media (prefers-color-scheme: dark) {
