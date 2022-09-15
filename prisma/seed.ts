@@ -25,7 +25,6 @@ const run = async () => {
   });
 
   const weekFromNow = add(new Date(), { days: 7 });
-  const twoWeekFromNow = add(new Date(), { days: 14 });
 
   const vanityClass = await prisma.class.create({
     data: {
