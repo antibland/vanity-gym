@@ -3,16 +3,17 @@ import jwt from "jsonwebtoken";
 import cookie from "cookie";
 import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../lib/prisma";
+import { getSecret } from "../../lib/auth";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const salt = bcrypt.genSaltSync(10);
   const { email, password } = req.body;
-  const secret = process.env.VANITY_SECRET ?? "vgsecret";
 
   let user;
 
   try {
     user = await prisma.user.create({
+      // @ts-ignore
       data: {
         email,
         password: bcrypt.hashSync(password, salt),
@@ -30,7 +31,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       id: user.id,
       time: Date.now(),
     },
-    secret,
+    getSecret(),
     {
       expiresIn: "8h",
     }

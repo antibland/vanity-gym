@@ -1,17 +1,18 @@
 import jwt from "jsonwebtoken";
 import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "./prisma";
-const secret = process.env.VANITY_GYM_SECRET ?? "";
+
+export const getSecret = () => process.env.VANITY_SECRET ?? "vgsecret";
 
 export const validateRoute = (handler: any) => {
   return async (req: NextApiRequest, res: NextApiResponse) => {
-    const { VANITY_GYM_ACCESS_TOKEN: token } = req.cookies;
+    const { VANITY_ACCESS_TOKEN: token } = req.cookies;
 
     if (token) {
       let user;
 
       try {
-        const { id }: any = jwt.verify(token, secret);
+        const { id }: any = jwt.verify(token, getSecret());
         user = await prisma.user.findUnique({ where: { id } });
 
         if (!user) {
@@ -31,6 +32,6 @@ export const validateRoute = (handler: any) => {
 };
 
 export const validateToken = (token: string) => {
-  const user = jwt.verify(token, secret);
+  const user = jwt.verify(token, getSecret());
   return user;
 };

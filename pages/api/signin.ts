@@ -3,10 +3,10 @@ import jwt from "jsonwebtoken";
 import cookie from "cookie";
 import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../lib/prisma";
+import { getSecret } from "../../lib/auth";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { email, password } = req.body;
-  const secret = process.env.VANITY_SECRET ?? "vgsecret";
 
   const user = await prisma.user.findUnique({
     where: { email },
@@ -19,7 +19,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         id: user.id,
         time: Date.now(),
       },
-      "hello",
+      getSecret(),
       {
         expiresIn: "8h",
       }
@@ -27,7 +27,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     res.setHeader(
       "Set-Cookie",
-      cookie.serialize(secret, token, {
+      cookie.serialize("VANITY_ACCESS_TOKEN", token, {
         httpOnly: true,
         maxAge: 8 * 60 * 60, // 8h
         path: "/",

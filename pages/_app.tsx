@@ -3,8 +3,10 @@ import type { AppProps } from "next/app";
 import { StoreProvider } from "easy-peasy";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import "reset-css";
+import React from "react";
 import { store } from "../lib/store";
 import Layout from "../components/layout";
+
 type Props = StoreProvider["props"] & { children: React.ReactNode };
 const StoreProviderCasted =
   StoreProvider as unknown as React.ComponentType<Props>;
@@ -37,16 +39,21 @@ const theme = extendTheme({
   },
 });
 
-function MyApp({ Component, pageProps }: AppProps) {
+const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <ChakraProvider theme={theme}>
       <StoreProviderCasted store={store}>
-        <Layout>
+        {/* @ts-ignore */}
+        {Component.authPage ? (
           <Component {...pageProps} />
-        </Layout>
+        ) : (
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        )}
       </StoreProviderCasted>
     </ChakraProvider>
   );
-}
+};
 
 export default MyApp;
