@@ -31,6 +31,7 @@ model Class {
   name        String            @unique
   details     String
   maxCapacity Int               @default(10)
+  cover       String?
   members     ClassEnrollment[]
 }
 
