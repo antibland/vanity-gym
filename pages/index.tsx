@@ -2,7 +2,7 @@ import { Box } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useMe } from "../lib/hooks";
-import IndexLoggedOut from "../components/index/logedOut";
+import IndexLoggedOut from "../components/index/loggedOut";
 import IndexLoggedIn from "../components/index/loggedIn";
 
 const Home: NextPage = () => {
