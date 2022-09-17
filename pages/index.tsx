@@ -15,13 +15,7 @@ const Home: NextPage = () => {
         <meta name="description" content="Vanity Gym" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {user?.error ? (
-        <IndexLoggedOut />
-      ) : (
-        <Box>
-          <IndexLoggedIn user={user} />
-        </Box>
-      )}
+      {user?.error ? <IndexLoggedOut /> : <IndexLoggedIn user={user} />}
     </Box>
   );
 };
