@@ -19,7 +19,7 @@ import {
 
 import { BsInstagram } from "react-icons/bs";
 
-const navMenu = [
+export const navMenu = [
   {
     name: "Home",
     icon: MdHome,
@@ -37,7 +37,7 @@ const navMenu = [
   },
 ];
 
-const socialMenu = [
+export const socialMenu = [
   {
     name: "Phone",
     icon: MdPhone,

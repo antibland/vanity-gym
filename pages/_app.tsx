@@ -24,6 +24,10 @@ const theme = extendTheme({
       800: "#424242",
       900: "#212121",
     },
+    tan: {
+      500: "#ffd188",
+      900: "hsl(37deg 100% 57%)",
+    },
   },
   components: {
     Button: {

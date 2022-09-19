@@ -2,8 +2,10 @@ import { Box, Button, Heading } from "@chakra-ui/react";
 import { Flex, Text } from "@chakra-ui/layout";
 import gsap from "gsap";
 import { FC, useEffect } from "react";
+import { useRouter } from "next/router";
 
-const IndexLoggedOut: FC = () => {
+const IndexLoggedOut: FC<{ style?: any }> = ({ style }) => {
+  const router = useRouter();
   useEffect(() => {
     const tl = gsap.timeline({
       defaults: {
@@ -60,6 +62,7 @@ const IndexLoggedOut: FC = () => {
       bgPosition="center"
       bgSize="cover"
       display="flex"
+      style={style}
     >
       <Flex
         flexDirection="column"
@@ -90,6 +93,7 @@ const IndexLoggedOut: FC = () => {
           className="index-hidden-subtitle"
           position="absolute"
           transform="translateY(-80px)"
+          noOfLines={2}
         >
           Stop Acting Like A Mortal!
         </Heading>
@@ -98,20 +102,32 @@ const IndexLoggedOut: FC = () => {
         </Text>
 
         <Button
+          onClick={() => router.push("/signup")}
           className="call-to-action"
           position="relative"
           top="4"
           type="button"
           variant="solid"
-          bg="#ffd188"
+          bg="tan.500"
           opacity="0"
           transform="scale(0.8)"
+          size="lg"
+          sx={{
+            "&:hover": {
+              transform: "scale(0.97)",
+              bg: "tan.900",
+            },
+          }}
         >
           Sign Up Today
         </Button>
       </Flex>
     </Box>
   );
+};
+
+IndexLoggedOut.defaultProps = {
+  style: {},
 };
 
 export default IndexLoggedOut;
