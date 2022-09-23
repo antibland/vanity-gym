@@ -86,7 +86,12 @@ const Header = () => {
             <ListItem paddingX="10px" key={name} fontSize="16px">
               <LinkBox>
                 <Link href={href} passHref>
-                  <LinkOverlay color="white" textShadow="headerOnDarkBG">
+                  <LinkOverlay
+                    color="white"
+                    textShadow="headerOnDarkBG"
+                    textTransform="uppercase"
+                    fontSize="13px"
+                  >
                     <>
                       <ListIcon
                         as={icon}
