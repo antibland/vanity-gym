@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
 
+:root {
+  --box-shadow-section: 0 0 50px rgb(0 0 0 / 35%);
+  --transition-time-quick: 0.22s;
+}
+
 html,
 body {
   padding: 0;
@@ -31,9 +36,15 @@ a {
 
 main {
   flex-grow: 1;
-  background: url(https://thumbs.dreamstime.com/b/yoga-mat-texture-circle-background-54968328.jpg)
-    repeat fixed 10% -60px;
+  background: hsl(0 0% 54%);
   background-size: 500px;
+}
+
+main section {
+  padding-block: 10rem;
+}
+main section .class-grid {
+  box-shadow: var(--box-shadow-section);
 }
 
 footer {
@@ -74,6 +85,32 @@ footer a:visited {
 .class-grid-item:hover .descriptions {
   clip-path: circle(75%);
 }
+
+/* 
+** Start Header 
+*/
+
+header[aria-label="main navigation"] {
+  z-index: 1;
+  transition: var(--transition-time-quick) background-color ease-in-out;
+}
+
+header.inverted {
+  background-color: #fff;
+}
+
+header.inverted .chakra-linkbox__overlay {
+  color: #000;
+  text-shadow: none;
+}
+
+header.inverted .chakra-heading {
+  color: #000;
+}
+
+/* 
+** End Header 
+*/
 
 @media (prefers-color-scheme: dark) {
   html {

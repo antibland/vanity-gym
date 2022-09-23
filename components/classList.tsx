@@ -4,6 +4,17 @@ import { Button } from "@chakra-ui/react";
 const ClassList = ({ classes }: any) => {
   return (
     <Box as="section">
+      <Heading
+        as="h2"
+        size="2xl"
+        color="white"
+        textAlign="center"
+        marginBlockEnd="5"
+        letterSpacing="1px"
+        textShadow="headerOnDarkBG"
+      >
+        Our Classes
+      </Heading>
       <Grid templateColumns="repeat(2, 1fr)" h="600px" className="class-grid">
         {classes.map(({ name, details, cover }: any) => {
           return (

@@ -3,7 +3,7 @@ import type { AppProps } from "next/app";
 import { StoreProvider } from "easy-peasy";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import "reset-css";
-import React from "react";
+import React, { useEffect } from "react";
 import { store } from "../lib/store";
 import Layout from "../components/layout";
 
@@ -29,6 +29,9 @@ const theme = extendTheme({
       900: "hsl(37deg 100% 57%)",
     },
   },
+  shadows: {
+    headerOnDarkBG: "0 0 4px rgba(0, 0, 0, 0.8)",
+  },
   components: {
     Button: {
       variants: {
@@ -44,6 +47,24 @@ const theme = extendTheme({
 });
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
+  useEffect(() => {
+    const className = "inverted";
+
+    const scrollTrigger = 60;
+
+    window.onscroll = () => {
+      // We add pageYOffset for compatibility with IE.
+      if (
+        window.scrollY >= scrollTrigger ||
+        window.pageYOffset >= scrollTrigger
+      ) {
+        document.getElementsByTagName("header")[0].classList.add(className);
+      } else {
+        document.getElementsByTagName("header")[0].classList.remove(className);
+      }
+    };
+  }, []);
+
   return (
     <ChakraProvider theme={theme}>
       <StoreProviderCasted store={store}>

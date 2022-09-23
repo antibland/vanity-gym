@@ -17,11 +17,7 @@ const Home: NextPage = ({ classes }: any) => {
         <meta name="description" content="Vanity Gym" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {user?.error ? (
-        <IndexLoggedOut style={{ marginBlockEnd: "15rem" }} />
-      ) : (
-        <IndexLoggedIn user={user} />
-      )}
+      {user?.error ? <IndexLoggedOut /> : <IndexLoggedIn user={user} />}
 
       <ClassList classes={classes} />
     </Box>

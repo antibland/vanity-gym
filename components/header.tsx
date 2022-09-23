@@ -59,43 +59,40 @@ const Header = () => {
   return (
     <Box
       as="header"
+      aria-label="main navigation"
       display="flex"
       alignItems="center"
-      justifyContent="space-around"
+      paddingInline="3"
+      position="fixed"
+      top="0"
+      left="0"
+      right="0"
+      justifyContent="space-between"
     >
       <Box display="flex" alignItems="center">
-        <Heading as="h1" whiteSpace="nowrap">
+        <Heading
+          as="h1"
+          whiteSpace="nowrap"
+          color="white"
+          transition="var(--transition-time-quick) color ease-in-out"
+        >
           Vanity Gym
         </Heading>
-        <Image src="/muscle.png" alt="muscle" width="100px" />
+        <Image src="/muscle.png" alt="muscle" width="80px" />
       </Box>
       <Box>
         <List display="flex">
           {navMenu.map(({ name, href, icon }) => (
-            <ListItem paddingX="20px" key={name} fontSize="16px">
-              <LinkBox>
-                <Link href={href} passHref>
-                  <LinkOverlay>
-                    <>
-                      <ListIcon as={icon} color="black" marginRight="10px" />
-                      {name}
-                    </>
-                  </LinkOverlay>
-                </Link>
-              </LinkBox>
-            </ListItem>
-          ))}
-        </List>
-      </Box>
-      <Box>
-        <List display="flex">
-          {socialMenu.map(({ name, href, icon }) => (
             <ListItem paddingX="10px" key={name} fontSize="16px">
               <LinkBox>
                 <Link href={href} passHref>
-                  <LinkOverlay>
+                  <LinkOverlay color="white" textShadow="headerOnDarkBG">
                     <>
-                      <ListIcon as={icon} color="black" marginRight="6px" />
+                      <ListIcon
+                        as={icon}
+                        color="currentColor"
+                        marginRight="5px"
+                      />
                       {name}
                     </>
                   </LinkOverlay>

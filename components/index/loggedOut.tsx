@@ -56,7 +56,7 @@ const IndexLoggedOut: FC<{ style?: any }> = ({ style }) => {
 
   return (
     <Box
-      minHeight="2xl"
+      minHeight="container.md"
       bgImage="/bg-muscle.jpg"
       bgRepeat="no-repeat"
       bgPosition="center"
@@ -93,11 +93,12 @@ const IndexLoggedOut: FC<{ style?: any }> = ({ style }) => {
           className="index-hidden-subtitle"
           position="absolute"
           transform="translateY(-80px)"
+          textShadow="headerOnDarkBG"
           noOfLines={2}
         >
           Stop Acting Like A Mortal!
         </Heading>
-        <Text fontSize="3xl" color="white">
+        <Text fontSize="3xl" color="white" textShadow="headerOnDarkBG">
           Signup now to unlock your buried muscle fibers
         </Text>
 
